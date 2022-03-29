@@ -4,7 +4,10 @@ Created on Tue Oct 10
 
 @author: jaehyuk
 """
+'''
+Let's do it now!
 
+'''
 import numpy as np
 import scipy.stats as ss
 import scipy.optimize as sopt
@@ -146,3 +149,6 @@ class ModelNormalCondMC:
         '''
         np.random.seed(12345)
         return np.zeros_like(strike)
+'''
+Well done!
+'''
