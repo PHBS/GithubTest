@@ -48,11 +48,7 @@ class Model:
         '''
         return 0
 
-    def vega(self, strike, spot, texp=None, vol=None, cp_sign=1):
-        ''' 
-        <-- PUT your implementation here
-        '''
-        return 0
+
 
     def gamma(self, strike, spot, texp=None, vol=None, cp_sign=1):
         ''' 
