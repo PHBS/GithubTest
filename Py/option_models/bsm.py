@@ -47,10 +47,9 @@ class Model:
         <-- PUT your implementation here
         '''
         return 0
-
-    def vega(self, strike, spot, texp=None, vol=None, cp_sign=1):
-        ''' 
-        <-- PUT your implementation here
+    def vanna(self, strike, spot, sigma):
+        '''
+        New greek of Vanna~~~let's see it~
         '''
         return 0
 
