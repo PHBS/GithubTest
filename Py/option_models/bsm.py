@@ -54,11 +54,6 @@ class Model:
         '''
         return 0
 
-    def gamma(self, strike, spot, texp=None, vol=None, cp_sign=1):
-        ''' 
-        <-- PUT your implementation here
-        '''
-        return 0
 
     def impvol(self, price_in, strike, spot, texp=None, cp_sign=1):
         texp = self.texp if(texp is None) else texp
