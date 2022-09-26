@@ -9,9 +9,11 @@ import numpy as np
 import scipy.stats as ss
 import scipy.optimize as sopt
 
-def price(strike, spot, texp, vol, intr=0.0, divr=0.0, cp_sign=1):
+def price(strike, spot, texp, vol, intr=0.0, divr=0.0, cp=1):
     """
-    Option price
+    Option price 
+    
+    
     """
     
     div_fac = np.exp(-texp*divr)
@@ -19,7 +21,7 @@ def price(strike, spot, texp, vol, intr=0.0, divr=0.0, cp_sign=1):
     forward = spot / disc_fac * div_fac
 
     if( texp<=0 ):
-        return disc_fac * np.fmax( cp_sign*(forward-strike), 0 )
+        return disc_fac * np.fmax( cp*(forward-strike), 0 )
     
     # floor vol_std above a very small number
     vol_std = np.fmax(vol*np.sqrt(texp), 1e-32)
@@ -27,8 +29,8 @@ def price(strike, spot, texp, vol, intr=0.0, divr=0.0, cp_sign=1):
     d1 = np.log(forward/strike)/vol_std + 0.5*vol_std
     d2 = d1 - vol_std
 
-    price = cp_sign * disc_fac \
-        * ( forward * ss.norm.cdf(cp_sign*d1) - strike * ss.norm.cdf(cp_sign*d2) )
+    price = cp * disc_fac \
+        * ( forward * ss.norm.cdf(cp*d1) - strike * ss.norm.cdf(cp*d2) )
     return price
 
 class Model:
