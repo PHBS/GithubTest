@@ -20,6 +20,7 @@ class ModelBsmMC:
     bsm_model = None
     '''
     You may define more members for MC: time step, etc
+    just a test for PR
     '''
     
     def __init__(self, sigma, vov=0, rho=0.0, beta=1.0, intr=0, divr=0):
