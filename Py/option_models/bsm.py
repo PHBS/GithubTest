@@ -10,6 +10,10 @@ import scipy.stats as ss
 import scipy.optimize as sopt
 
 def price(strike, spot, texp, vol, intr=0.0, divr=0.0, cp_sign=1):
+    """
+    Option price
+    """
+    
     div_fac = np.exp(-texp*divr)
     disc_fac = np.exp(-texp*intr)
     forward = spot / disc_fac * div_fac
@@ -49,12 +53,6 @@ class Model:
         return 0
 
     def vega(self, strike, spot, texp=None, vol=None, cp_sign=1):
-        ''' 
-        <-- PUT your implementation here
-        '''
-        return 0
-
-    def gamma(self, strike, spot, texp=None, vol=None, cp_sign=1):
         ''' 
         <-- PUT your implementation here
         '''
