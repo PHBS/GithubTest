@@ -1,24 +1,31 @@
     # -*- coding: utf-8 -*-
 """
-Created on Tue Sep 19 22:56:58 2017
+Created on Tue Sep 19 21:40:58 2022
 
 @author: jaehyuk
 
 purpose：the purose for this py file is to define one class for blblbl and one method for blblbl
 
+@student:zhou
 """
 
 import numpy as np
 import scipy.stats as ss
 import scipy.optimize as sopt
 
-def price(strike, spot, texp, vol, intr=0.0, divr=0.0, cp_sign=1):
+def price(strike, spot, texp, vol, intr=0.0, divr=0.0, cp=1):
+    """
+    Option price 
+    
+    
+    """
+    
     div_fac = np.exp(-texp*divr)
     disc_fac = np.exp(-texp*intr)
     forward = spot / disc_fac * div_fac
 
     if( texp<=0 ):
-        return disc_fac * np.fmax( cp_sign*(forward-strike), 0 )
+        return disc_fac * np.fmax( cp*(forward-strike), 0 )
     
     # floor vol_std above a very small number
     vol_std = np.fmax(vol*np.sqrt(texp), 1e-32)
@@ -26,8 +33,8 @@ def price(strike, spot, texp, vol, intr=0.0, divr=0.0, cp_sign=1):
     d1 = np.log(forward/strike)/vol_std + 0.5*vol_std
     d2 = d1 - vol_std
 
-    price = cp_sign * disc_fac \
-        * ( forward * ss.norm.cdf(cp_sign*d1) - strike * ss.norm.cdf(cp_sign*d2) )
+    price = cp * disc_fac \
+        * ( forward * ss.norm.cdf(cp*d1) - strike * ss.norm.cdf(cp*d2) )
     return price
 
 class Model:
@@ -52,12 +59,6 @@ class Model:
         return 0
 
     def vega(self, strike, spot, texp=None, vol=None, cp_sign=1):
-        ''' 
-        <-- PUT your implementation here
-        '''
-        return 0
-
-    def gamma(self, strike, spot, texp=None, vol=None, cp_sign=1):
         ''' 
         <-- PUT your implementation here
         '''
