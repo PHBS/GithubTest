@@ -3,6 +3,9 @@
 Created on Tue Sep 19 21:40:58 2022
 
 @author: jaehyuk
+
+purpose：the purose for this py file is to define one class for blblbl and one method for blblbl
+
 @student:zhou
 """
 
